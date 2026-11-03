@@ -105,3 +105,58 @@ CREATE TABLE students (
     name VARCHAR(100),
     city VARCHAR(50)
 );
+instruction for chatgpt"take important ones only from "MySQL Data Types (Version 8.4)
+
+The data type of a column defines what value the column can hold: integer, character, money, date and time, binary, and so on.
+
+Each column in a database table is required to have a name and a data type.
+
+An SQL developer must decide what type of data that will be stored inside each column when creating a table. The data type is a guideline for SQL to understand what type of data is expected inside of each column, and it also identifies how SQL will interact with the stored data.
+
+In MySQL there are three main data types: String, Numeric, and Date and Time.
+String Data Types
+Data type 	Description
+CHAR(size) 	A fixed-length string (can contain letters, numbers, and special characters). size specifies the column length in characters, from 0 to 255. Default size is 1
+VARCHAR(size) 	A variable-length string (can contain letters, numbers, and special characters). size specifies the maximum column length in characters, from 0 to 65535
+BINARY(size) 	Similar to CHAR(), but stores binary byte strings. size specifies the column length in bytes. Default size is 1
+VARBINARY(size) 	Similar to VARCHAR(), but stores binary byte strings. size specifies the maximum column length in bytes.
+BLOB(size) 	A BLOB column with a maximum length of 65535 bytes
+TINYBLOB 	A BLOB column with a maximum length of 255 bytes
+MEDIUMBLOB 	A BLOB column with a maximum length of 16777215 bytes
+LONGBLOB 	A BLOB column with a maximum length of 4294967295 or 4GB bytes
+TEXT(size) 	Holds a string with a maximum length of 65535 bytes
+TINYTEXT 	A TEXT column with a maximum length of 255 characters
+MEDIUMTEXT 	A TEXT column with a maximum length of 16777215 characters
+LONGTEXT 	A TEXT column with a maximum length of 4294967295 or 4GB bytes
+ENUM(val1, val2, val3, ...) 	A string object that can have only one value, chosen from the list of possible values (val1, val2, val3,..). You can list up to 65535 values. If a value is inserted that is not in the list, a blank value will be inserted
+SET(val1, val2, val3, ...) 	A string object that can have zero or more values, chosen from the list of possible values (val1, val2, val3,..). You can list up to 64 values
+
+REMOVE ADS
+Numeric Data Types
+Data type 	Description
+BIT(size) 	A bit-value type. size indicates the number of bits per value, from 1 to 64. The default value for size is 1.
+TINYINT(size) 	A very small integer. Signed range is from -128 to 127. Unsigned range is from 0 to 255. size specifies the minimum display width (max display width is 255)
+BOOL 	A value of zero is considered as false, nonzero values are considered as true.
+BOOLEAN 	Equal to BOOL
+SMALLINT(size) 	A small integer. Signed range is from -32768 to 32767. Unsigned range is from 0 to 65535. size specifies the minimum display width (max display width is 255)
+MEDIUMINT(size) 	A medium-sized integer. Signed range is from -8388608 to 8388607. Unsigned range is from 0 to 16777215. size specifies the minimum display width (max display width is 255)
+INT(size) 	A normal-size integer. Signed range is from -2147483648 to 2147483647. Unsigned range is from 0 to 4294967295. size specifies minimum display width (max display width is 255)
+INTEGER(size) 	Synonym for INT(size)
+BIGINT(size) 	A large integer. Signed range is from -9223372036854775808 to 9223372036854775807. Unsigned range is from 0 to 18446744073709551615. size specifies the minimum display width (max display width is 255)
+DECIMAL(size, d) 	An exact fixed-point number. size indicates the total number of digits (max 65). d indicates the number of digits after the decimal point (max 30). The default value for size is 10. The default value for d is 0.
+DEC(size, d) 	Synonym for DECIMAL(size, d)
+FLOAT(size, d) 	A small floating-point number. FLOAT(size, d) is deprecated in MySQL 8.0.17, and it will be removed in future MySQL versions
+FLOAT(p) 	A floating-point number. The p value determines whether to use FLOAT or DOUBLE for the resulting data type. If p is from 0 to 24, the data type becomes FLOAT. If p is from 25 to 53, the data type becomes DOUBLE
+DOUBLE(size, d) 	A normal-size floating-point number. Permissible values are -1.7976931348623157E+308 to -2.2250738585072014E-308, 0, and 2.2250738585072014E-308 to 1.7976931348623157E+308. The total number of digits is specified in size. The number of digits after the decimal point is specified in the d parameter
+DOUBLE PRECISION(size, d) 	Synonym for DOUBLE(size, d)
+Date and Time Data Types
+Data type 	Description
+DATE 	A date. Format: YYYY-MM-DD. The supported range is from '1000-01-01' to '9999-12-31'
+DATETIME(fsp) 	A date and time combination. Format: YYYY-MM-DD hh:mm:ss. The supported range is from '1000-01-01 00:00:00' to '9999-12-31 23:59:59'. Adding DEFAULT and ON UPDATE in the column definition to get automatic initialization and updating to the current date and time
+TIMESTAMP(fsp) 	A timestamp. Format: YYYY-MM-DD hh:mm:ss. TIMESTAMP values are stored as the number of seconds since the Unix epoch ('1970-01-01 00:00:00' UTC). The supported range is from '1970-01-01 00:00:01' UTC to '2038-01-09 03:14:07' UTC. Automatic initialization and updating to the current date and time can be specified using DEFAULT CURRENT_TIMESTAMP and ON UPDATE CURRENT_TIMESTAMP in the column definition
+TIME(fsp) 	A time. Format: hh:mm:ss. The supported range is from '-838:59:59' to '838:59:59'
+YEAR 	A year in a four-digit format (YYYY). Values allowed in four-digit format: 1901 to 2155, and 0000."
+//UPDATE
+mysql> UPDATE students SET attendance = 1 WHERE name = 'Neeraj';
+Query OK, 2 rows affected (0.00 sec)
+Rows matched: 3  Changed: 2  Warnings: 0
