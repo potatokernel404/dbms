@@ -1,0 +1,107 @@
+system cls
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> use world;
+Database changed
+ mysql> show tables;
++-----------------+
+| Tables_in_world |
++-----------------+
+| city            |
+| country         |
+| countrylanguage |
++-----------------+
+3 rows in set (0.00 sec)
+mysql> describe countrylanguage; or desc <tableName>;
++-------------+---------------+------+-----+---------+-------+
+| Field       | Type          | Null | Key | Default | Extra |
++-------------+---------------+------+-----+---------+-------+
+| CountryCode | char(3)       | NO   | PRI |         |       |
+| Language    | char(30)      | NO   | PRI |         |       |
+| IsOfficial  | enum('T','F') | NO   |     | F       |       |
+| Percentage  | decimal(4,1)  | NO   |     | 0.0     |       |
++-------------+---------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+select * from country;
+select <attribute_name> from <table_name>;
+
+/make a database
+mysql> create database mango;
+Query OK, 1 row affected (0.01 sec)
+mysql> create table students(
+    ->     rollno int,
+    ->     name char(25),
+    ->     city char(20),
+    ->     address varchar(50),
+    ->     pincode char(6),
+    ->     mobileno decimal(10),
+    ->     dob date,
+    ->     attendance bool
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables;
++-----------------+
+| Tables_in_mango |
++-----------------+
+| students        |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> describe students;
++------------+---------------+------+-----+---------+-------+
+| Field      | Type          | Null | Key | Default | Extra |
++------------+---------------+------+-----+---------+-------+
+| rollno     | int           | YES  |     | NULL    |       |
+| name       | char(25)      | YES  |     | NULL    |       |
+| city       | char(20)      | YES  |     | NULL    |       |
+| address    | varchar(50)   | YES  |     | NULL    |       |
+| pincode    | char(6)       | YES  |     | NULL    |       |
+| mobileno   | decimal(10,0) | YES  |     | NULL    |       |
+| dob        | date          | YES  |     | NULL    |       |
+| attendance | tinyint(1)    | YES  |     | NULL    |       |
++------------+---------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> --MySQL accepts both, because it treats TRUE and FALSE as direct aliases for 1 and 0.
+//you can insert values in tables as follows:
+mysql> insert into students values(1,"Arya","Nashik","15 chandramangal prabhat colony new cidco","422009","9970643818","2026-11-1",True);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from students;
++--------+------+--------+-------------------------------------------+---------+------------+------------+------------+
+| rollno | name | city   | address                                   | pincode | mobileno   | dob        | attendance |
++--------+------+--------+-------------------------------------------+---------+------------+------------+------------+
+|      1 | Arya | Nashik | 15 chandramangal prabhat colony new cidco | 422009  | 9970643818 | 2026-11-01 |          1 |
++--------+------+--------+-------------------------------------------+---------+------------+------------+------------+
+1 row in set (0.00 sec)
+
+mysql> insert into students values(2,"Neeraj","Pune","15 chandramangal prabhat colony new pune","422002","9870643818","2026-11-2",True);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from students;
++--------+--------+--------+-------------------------------------------+---------+------------+------------+------------+
+| rollno | name   | city   | address                                   | pincode | mobileno   | dob        | attendance |
++--------+--------+--------+-------------------------------------------+---------+------------+------------+------------+
+|      1 | Arya   | Nashik | 15 chandramangal prabhat colony new cidco | 422009  | 9970643818 | 2026-11-01 |          1 |
+|      2 | Neeraj | Pune   | 15 chandramangal prabhat colony new pune  | 422002  | 9870643818 | 2026-11-02 |          1 |
++--------+--------+--------+-------------------------------------------+---------+------------+------------+------------+
+2 rows in set (0.00 sec)
+
+//how to auto incrememnt 
+CREATE TABLE students (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    city VARCHAR(50)
+);
