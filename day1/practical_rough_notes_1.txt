@@ -1,3 +1,4 @@
+i want you to make md file content for these notes.
 system cls
 mysql> show databases;
 +--------------------+
