@@ -1,0 +1,17 @@
+//creating table with multiple constraints 
+list of constrainsts used:
+not Null
+default
+check
+unique
+primary Key
+foreign Key
+create table farmers(fid int primary key,
+id int not null,
+name char(20) not null,
+age int check(age >= 18 and age <= 50));
+CREATE TABLE farmers (
+    fid INT PRIMARY KEY,
+    id INT NOT NULL,
+2 
+);

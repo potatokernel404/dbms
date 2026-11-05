@@ -1,0 +1,2381 @@
+mysql> select * from employees group by dept_id;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'employee_dept.employees.emp_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select ^Crom employees group by dept_id;
+mysql> select sum(dept_id)emp_name,salary from employees group by salary;
++----------+----------+
+| emp_name | salary   |
++----------+----------+
+|        1 | 45000.00 |
+|        2 | 55000.00 |
+|        1 | 65000.00 |
+|        3 | 35000.00 |
+|        4 | 60000.00 |
+|        2 | 48000.00 |
+|        1 | 80000.00 |
+|        3 | 52000.00 |
+|        4 | 40000.00 |
+|        1 | 70000.00 |
+|        3 | 30000.00 |
+|        2 | 75000.00 |
++----------+----------+
+12 rows in set (0.00 sec)
+
+mysql> select sum(dept_id),emp_name,salary from employees group by salary order by dept_id;
+ERROR 1055 (42000): Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'employee_dept.employees.emp_name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select sum(dept_id),emp_n^Ce,salary from employees group by salary order by dept_id;
+mysql> ^C
+mysql> SELECT salary, SUM(dept_id)
+    -> FROM employees
+    -> GROUP BY salary
+    -> ORDER BY salary;
++----------+--------------+
+| salary   | SUM(dept_id) |
++----------+--------------+
+| 30000.00 |            3 |
+| 35000.00 |            3 |
+| 40000.00 |            4 |
+| 45000.00 |            1 |
+| 48000.00 |            2 |
+| 52000.00 |            3 |
+| 55000.00 |            2 |
+| 60000.00 |            4 |
+| 65000.00 |            1 |
+| 70000.00 |            1 |
+| 75000.00 |            2 |
+| 80000.00 |            1 |
++----------+--------------+
+12 rows in set (0.00 sec)
+
+mysql> SELECT salary, SUM(dept_id)
+    -> FROM employees
+    -> GROUP BY salary
+    -> ORDER BY dept_id;
+ERROR 1055 (42000): Expression #1 of ORDER BY clause is not in GROUP BY clause and contains nonaggregated column 'employee_dept.employees.dept_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> SELECT salary, SUM(dept_id)
+    -> FROM employees
+    -> GROUP BY salary
+    -> ^COUP BY salary
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> SELECT AVG(salary),dept_id
+    -> FROM employees
+    -> GROUP BY dept_id
+    -> ORDER BY dept_id;
++--------------+---------+
+| AVG(salary)  | dept_id |
++--------------+---------+
+| 65000.000000 |       1 |
+| 59333.333333 |       2 |
+| 39000.000000 |       3 |
+| 50000.000000 |       4 |
++--------------+---------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employees;
++--------+----------+------+----------+---------+
+| emp_id | emp_name | age  | salary   | dept_id |
++--------+----------+------+----------+---------+
+|    101 | Rahul    |   25 | 45000.00 |       1 |
+|    102 | Priya    |   28 | 55000.00 |       2 |
+|    103 | Amit     |   32 | 65000.00 |       1 |
+|    104 | Sneha    |   24 | 35000.00 |       3 |
+|    105 | Karan    |   30 | 60000.00 |       4 |
+|    106 | Neha     |   27 | 48000.00 |       2 |
+|    107 | Rohit    |   35 | 80000.00 |       1 |
+|    108 | Pooja    |   29 | 52000.00 |       3 |
+|    109 | Vikas    |   26 | 40000.00 |       4 |
+|    110 | Anjali   |   31 | 70000.00 |       1 |
+|    111 | Suresh   |   23 | 30000.00 |       3 |
+|    112 | Meera    |   33 | 75000.00 |       2 |
++--------+----------+------+----------+---------+
+12 rows in set (0.00 sec)
+
+mysql> create database myemp;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use myemp;
+Database changed
+mysql> source C:\Users\iacsd\Downloads\demobldmysql.sql
+Query OK, 0 rows affected, 3 warnings (0.03 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show tables;
++-----------------+
+| Tables_in_myemp |
++-----------------+
+| bonus           |
+| dept            |
+| dummy           |
+| emp             |
+| salgrade        |
++-----------------+
+5 rows in set (0.01 sec)
+
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select year(hiredate) from emp;
++----------------+
+| year(hiredate) |
++----------------+
+|           1980 |
+|           1981 |
+|           1981 |
+|           1981 |
+|           1981 |
+|           1981 |
+|           1981 |
+|           1982 |
+|           1981 |
+|           1981 |
+|           1983 |
+|           1981 |
+|           1981 |
+|           1982 |
++----------------+
+14 rows in set (0.00 sec)
+
+mysql> select year(hiredate),avg(salaryy) from emp group by year(hiredate) order by year(hiredate);
+ERROR 1054 (42S22): Unknown column 'salaryy' in 'field list'
+mysql> select year(hiredate),avg(salary) from emp group by year(hiredate) order by year(hiredate);
+ERROR 1054 (42S22): Unknown column 'salary' in 'field list'
+mysql> select year(hiredate),avg(sal) from emp group by year(hiredate) order by year(hiredate);
++----------------+-------------+
+| year(hiredate) | avg(sal)    |
++----------------+-------------+
+|           1980 |  800.000000 |
+|           1981 | 2282.500000 |
+|           1982 | 2150.000000 |
+|           1983 | 1100.000000 |
++----------------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> select year(hiredate),avg(sal) from emp group by year(hiredate);
++----------------+-------------+
+| year(hiredate) | avg(sal)    |
++----------------+-------------+
+|           1980 |  800.000000 |
+|           1981 | 2282.500000 |
+|           1982 | 2150.000000 |
+|           1983 | 1100.000000 |
++----------------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> select year(hiredate),count() from emp group by year(hiredate);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') from emp group by year(hiredate)' at line 1
+mysql> select year(hiredate),count(ename) from emp group by year(hiredate);
++----------------+--------------+
+| year(hiredate) | count(ename) |
++----------------+--------------+
+|           1980 |            1 |
+|           1981 |           10 |
+|           1982 |            2 |
+|           1983 |            1 |
++----------------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> select deptno,count(ename) from emp group by year(hiredate);
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'myemp.emp.DEPTNO' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select deptno,count(ename) from emp group by deptno;
++--------+--------------+
+| deptno | count(ename) |
++--------+--------------+
+|     20 |            5 |
+|     30 |            6 |
+|     10 |            3 |
++--------+--------------+
+3 rows in set (0.00 sec)
+
+mysql> select deptno,count(ename) as "no of employees" from emp group by deptno;
++--------+-----------------+
+| deptno | no of employees |
++--------+-----------------+
+|     20 |               5 |
+|     30 |               6 |
+|     10 |               3 |
++--------+-----------------+
+3 rows in set (0.00 sec)
+
+mysql> export
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employee_dept      |
+| information_schema |
+| mango              |
+| myemp              |
+| mysql              |
+| performance_schema |
+| sakila             |
+| student_db         |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.00 sec)
+
+mysql> export employee_dept;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'export employee_dept' at line 1
+mysql> select deptno,count(comm) from emp group by deptno;
++--------+-------------+
+| deptno | count(comm) |
++--------+-------------+
+|     20 |           0 |
+|     30 |           4 |
+|     10 |           0 |
++--------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> select deptno,count(deptno),count(comm) from emp group by deptno;
++--------+---------------+-------------+
+| deptno | count(deptno) | count(comm) |
++--------+---------------+-------------+
+|     20 |             5 |           0 |
+|     30 |             6 |           4 |
+|     10 |             3 |           0 |
++--------+---------------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> select deptno as "department name",count(deptno) as "no of employees",count(comm) as "no of commission" from emp group by deptno;
++-----------------+-----------------+------------------+
+| department name | no of employees | no of commission |
++-----------------+-----------------+------------------+
+|              20 |               5 |                0 |
+|              30 |               6 |                4 |
+|              10 |               3 |                0 |
++-----------------+-----------------+------------------+
+3 rows in set (0.00 sec)
+
+mysql> select deptno as "department name",count(job) as ""^Count(comm) as "no of commission" from emp group by deptno;
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> select deptno,count(deptno),job,count(job)from employee order by deptno;
+ERROR 1146 (42S02): Table 'myemp.employee' doesn't exist
+mysql> select deptno,count(deptno),job,count(job) from employee order by deptno;
+ERROR 1146 (42S02): Table 'myemp.employee' doesn't exist
+mysql> select deptno,count(deptno),job,count(job) from emp order by deptno;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'myemp.emp.DEPTNO'; this is incompatible with sql_mode=only_full_group_by
+mysql> select deptno,count(deptno),job,count(job) from emp order by job,deptno;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'myemp.emp.DEPTNO'; this is incompatible with sql_mode=only_full_group_by
+mysql> select deptno,count(deptno),job,count(job) from emp group by deptno;
+ERROR 1055 (42000): Expression #3 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'myemp.emp.JOB' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select deptno,job,count(job) from emp group by deptno,job;
++--------+-----------+------------+
+| deptno | job       | count(job) |
++--------+-----------+------------+
+|     20 | CLERK     |          2 |
+|     30 | SALESMAN  |          4 |
+|     20 | MANAGER   |          1 |
+|     30 | MANAGER   |          1 |
+|     10 | MANAGER   |          1 |
+|     20 | ANALYST   |          2 |
+|     10 | PRESIDENT |          1 |
+|     30 | CLERK     |          1 |
+|     10 | CLERK     |          1 |
++--------+-----------+------------+
+9 rows in set (0.00 sec)
+
+mysql> select deptno,job,count(job) from emp group by deptno,job  order by deptno;
++--------+-----------+------------+
+| deptno | job       | count(job) |
++--------+-----------+------------+
+|     10 | CLERK     |          1 |
+|     10 | MANAGER   |          1 |
+|     10 | PRESIDENT |          1 |
+|     20 | ANALYST   |          2 |
+|     20 | CLERK     |          2 |
+|     20 | MANAGER   |          1 |
+|     30 | CLERK     |          1 |
+|     30 | MANAGER   |          1 |
+|     30 | SALESMAN  |          4 |
++--------+-----------+------------+
+9 rows in set (0.00 sec)
+
+mysql> ---find the dept where more than 1 clerk is theree.
+    -> ^C
+mysql> ^C
+mysql> select dept from emp were job="clerk" and (select * from emp where job="clerk")>1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'job="clerk" and (select * from emp where job="clerk")>1' at line 1
+mysql> select dept from emp where (select * from emp where job="clerk")>1;
+ERROR 1054 (42S22): Unknown column 'dept' in 'field list'
+mysql> select deptno from emp where (select * from emp where job="clerk")>1;
+ERROR 1241 (21000): Operand should contain 8 column(s)
+mysql> select deptno from emp where 1<(select * from emp where job="clerk");
+ERROR 1241 (21000): Operand should contain 1 column(s)
+mysql> select deptno from emp wheselect * from emp where job="clerk")^C 1<(select * from emp where job="clerk");
+mysql> ^C
+mysql> select * from emp where job="clerk"
+    -> ;
++-------+--------+-------+------+------------+---------+------+--------+
+| EMPNO | ENAME  | JOB   | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+--------+-------+------+------------+---------+------+--------+
+|  7369 | SMITH  | CLERK | 7902 | 1980-12-17 |  800.00 | NULL |     20 |
+|  7876 | ADAMS  | CLERK | 7788 | 1983-01-12 | 1100.00 | NULL |     20 |
+|  7900 | JAMES  | CLERK | 7698 | 1981-12-03 |  950.00 | NULL |     30 |
+|  7934 | MILLER | CLERK | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
++-------+--------+-------+------+------------+---------+------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where (select * from emp where job="clerk")>1;
+ERROR 1241 (21000): Operand should contain 8 column(s)
+mysql> SELECT *
+    -> FROM emp
+    -> WHERE job = 'CLERK'
+    -> AND (SELECT COUNT(*) FROM emp WHERE job = 'CLERK') > 1;^C
+mysql> ^C
+mysql> select * from emp where (select count(*) from emp where job="clerk")>1;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select * from emp where job="clerk" and (select count(*) from emp where job="clerk")>1;
++-------+--------+-------+------+------------+---------+------+--------+
+| EMPNO | ENAME  | JOB   | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+--------+-------+------+------------+---------+------+--------+
+|  7369 | SMITH  | CLERK | 7902 | 1980-12-17 |  800.00 | NULL |     20 |
+|  7876 | ADAMS  | CLERK | 7788 | 1983-01-12 | 1100.00 | NULL |     20 |
+|  7900 | JAMES  | CLERK | 7698 | 1981-12-03 |  950.00 | NULL |     30 |
+|  7934 | MILLER | CLERK | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
++-------+--------+-------+------+------------+---------+------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where job="clerk" and (select count(*) from emp where job="clerk")>=2;
++-------+--------+-------+------+------------+---------+------+--------+
+| EMPNO | ENAME  | JOB   | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+--------+-------+------+------------+---------+------+--------+
+|  7369 | SMITH  | CLERK | 7902 | 1980-12-17 |  800.00 | NULL |     20 |
+|  7876 | ADAMS  | CLERK | 7788 | 1983-01-12 | 1100.00 | NULL |     20 |
+|  7900 | JAMES  | CLERK | 7698 | 1981-12-03 |  950.00 | NULL |     30 |
+|  7934 | MILLER | CLERK | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
++-------+--------+-------+------+------------+---------+------+--------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT *
+    -> FROM emp
+    -> WHERE job = 'CLERK'
+    -> AND (SELECT COUNT(*) FROM emp WHERE job = 'CLERK') > 1;
++-------+--------+-------+------+------------+---------+------+--------+
+| EMPNO | ENAME  | JOB   | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+--------+-------+------+------------+---------+------+--------+
+|  7369 | SMITH  | CLERK | 7902 | 1980-12-17 |  800.00 | NULL |     20 |
+|  7876 | ADAMS  | CLERK | 7788 | 1983-01-12 | 1100.00 | NULL |     20 |
+|  7900 | JAMES  | CLERK | 7698 | 1981-12-03 |  950.00 | NULL |     30 |
+|  7934 | MILLER | CLERK | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
++-------+--------+-------+------+------------+---------+------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employee where job="clerk";
+ERROR 1146 (42S02): Table 'myemp.employee' doesn't exist
+mysql> select * from emp where job="clerk";
++-------+--------+-------+------+------------+---------+------+--------+
+| EMPNO | ENAME  | JOB   | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+--------+-------+------+------------+---------+------+--------+
+|  7369 | SMITH  | CLERK | 7902 | 1980-12-17 |  800.00 | NULL |     20 |
+|  7876 | ADAMS  | CLERK | 7788 | 1983-01-12 | 1100.00 | NULL |     20 |
+|  7900 | JAMES  | CLERK | 7698 | 1981-12-03 |  950.00 | NULL |     30 |
+|  7934 | MILLER | CLERK | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
++-------+--------+-------+------+------------+---------+------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where job="clerk" and (select count(*) from emp where job="clerk")>1;
++-------+--------+-------+------+------------+---------+------+--------+
+| EMPNO | ENAME  | JOB   | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+--------+-------+------+------------+---------+------+--------+
+|  7369 | SMITH  | CLERK | 7902 | 1980-12-17 |  800.00 | NULL |     20 |
+|  7876 | ADAMS  | CLERK | 7788 | 1983-01-12 | 1100.00 | NULL |     20 |
+|  7900 | JAMES  | CLERK | 7698 | 1981-12-03 |  950.00 | NULL |     30 |
+|  7934 | MILLER | CLERK | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
++-------+--------+-------+------+------------+---------+------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where job="clerk" and group by job having count(*)>1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group by job having count(*)>1' at line 1
+mysql> select * from emp where job="clerk" group by job having count(*)>1;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'myemp.emp.EMPNO' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select * from emp where job="clerk" and group by deptno having count(*)>1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group by deptno having count(*)>1' at line 1
+mysql> select * from emp where job="clerk"  group by deptno having count(job)>1;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'myemp.emp.EMPNO' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select * from emp where job="clerk"  group by job having count(deptno)>1;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'myemp.emp.EMPNO' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select * from emp where job="clerk" and group by job having count(deptno)>1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group by job having count(deptno)>1' at line 1
+mysql> select * from emp where job="clerk" and group by job having count(deptno)>1;^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> select * from emp group by job;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'myemp.emp.EMPNO' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select * from emp group by count(job);
+ERROR 1111 (HY000): Invalid use of group function
+mysql> select job,count(job) from emp group by count(job);
+ERROR 1056 (42000): Can't group on 'count(job)'
+mysql> select job,count(empno) from emp group by count(job);
+ERROR 1111 (HY000): Invalid use of group function
+mysql> select job,count(empno) from emp group by job;
++-----------+--------------+
+| job       | count(empno) |
++-----------+--------------+
+| CLERK     |            4 |
+| SALESMAN  |            4 |
+| MANAGER   |            3 |
+| ANALYST   |            2 |
+| PRESIDENT |            1 |
++-----------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> select job from emp group by job;
++-----------+
+| job       |
++-----------+
+| CLERK     |
+| SALESMAN  |
+| MANAGER   |
+| ANALYST   |
+| PRESIDENT |
++-----------+
+5 rows in set (0.00 sec)
+
+mysql> select job from emp where job=group by job;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group by job' at line 1
+mysql>
+mysql> select job from emp where job="clerk" and group by job;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group by job' at line 1
+mysql> select job from emp where job="clerk" group by job;
++-------+
+| job   |
++-------+
+| CLERK |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select job from emp where job="clerk" group by job having count(job)>2;
++-------+
+| job   |
++-------+
+| CLERK |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select job,deptno from emp where job="clerk" group by job having count(deptno)>1;
+ERROR 1055 (42000): Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'myemp.emp.DEPTNO' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select job,deptno from emp where job="clerk" group by job;
+ERROR 1055 (42000): Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'myemp.emp.DEPTNO' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select job,deptno from emp where group by job;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group by job' at line 1
+mysql> select job from emp where group by job;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group by job' at line 1
+mysql> select job from emp where group by count(job);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group by count(job)' at line 1
+mysql> select * from emp where group by job;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group by job' at line 1
+mysql> select job from emp group by job
+    -> ;
++-----------+
+| job       |
++-----------+
+| CLERK     |
+| SALESMAN  |
+| MANAGER   |
+| ANALYST   |
+| PRESIDENT |
++-----------+
+5 rows in set (0.00 sec)
+
+mysql> select job,count(detno) from emp group by job
+    -> ;
+ERROR 1054 (42S22): Unknown column 'detno' in 'field list'
+mysql> select job,count(detno) from emp group by job;
+ERROR 1054 (42S22): Unknown column 'detno' in 'field list'
+mysql> select job,count(deptno) from emp group by job;
++-----------+---------------+
+| job       | count(deptno) |
++-----------+---------------+
+| CLERK     |             4 |
+| SALESMAN  |             4 |
+| MANAGER   |             3 |
+| ANALYST   |             2 |
+| PRESIDENT |             1 |
++-----------+---------------+
+5 rows in set (0.00 sec)
+
+mysql> select job,count(deptno) from emp group by jdeptno;
+ERROR 1054 (42S22): Unknown column 'jdeptno' in 'group statement'
+mysql> select job,count(deptno) from emp group by deptno;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'myemp.emp.JOB' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select job,deptno from emp group by deptno;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'myemp.emp.JOB' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select deptno from emp group by deptno;
++--------+
+| deptno |
++--------+
+|     20 |
+|     30 |
+|     10 |
++--------+
+3 rows in set (0.00 sec)
+
+mysql> select deptno from emp where job="clerk" group by deptno;
++--------+
+| deptno |
++--------+
+|     20 |
+|     30 |
+|     10 |
++--------+
+3 rows in set (0.00 sec)
+
+mysql> select deptno,job from emp where job="clerk" group by deptno having count(job)>1;
++--------+-------+
+| deptno | job   |
++--------+-------+
+|     20 | CLERK |
++--------+-------+
+1 row in set (0.00 sec)
+
+mysql> select deptno,job,count(job) from emp where job="clerk" group by deptno having count(job)>1;
++--------+-------+------------+
+| deptno | job   | count(job) |
++--------+-------+------------+
+|     20 | CLERK |          2 |
++--------+-------+------------+
+1 row in set (0.00 sec)
+
+mysql> show tables;
++-----------------+
+| Tables_in_myemp |
++-----------------+
+| bonus           |
+| dept            |
+| dummy           |
+| emp             |
+| salgrade        |
++-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from dept;
++--------+------------+----------+
+| DEPTNO | DNAME      | LOC      |
++--------+------------+----------+
+|     10 | ACCOUNTING | NEW YORK |
+|     20 | RESEARCH   | DALLAS   |
+|     30 | SALES      | CHICAGO  |
+|     40 | OPERATIONS | BOSTON   |
++--------+------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where deptno=(select deptno from dept where loc="DALLAS")
+    -> ;
++-------+-------+---------+------+------------+---------+------+--------+
+| EMPNO | ENAME | JOB     | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+-------+---------+------+------------+---------+------+--------+
+|  7369 | SMITH | CLERK   | 7902 | 1980-12-17 |  800.00 | NULL |     20 |
+|  7566 | JONES | MANAGER | 7839 | 1981-04-02 | 2975.00 | NULL |     20 |
+|  7788 | SCOTT | ANALYST | 7566 | 1982-12-09 | 3000.00 | NULL |     20 |
+|  7876 | ADAMS | CLERK   | 7788 | 1983-01-12 | 1100.00 | NULL |     20 |
+|  7902 | FORD  | ANALYST | 7566 | 1981-12-03 | 3000.00 | NULL |     20 |
++-------+-------+---------+------+------------+---------+------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from emp where deptno=(select deptno from dept where loc="DALLAS");
++-------+-------+---------+------+------------+---------+------+--------+
+| EMPNO | ENAME | JOB     | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+-------+---------+------+------------+---------+------+--------+
+|  7369 | SMITH | CLERK   | 7902 | 1980-12-17 |  800.00 | NULL |     20 |
+|  7566 | JONES | MANAGER | 7839 | 1981-04-02 | 2975.00 | NULL |     20 |
+|  7788 | SCOTT | ANALYST | 7566 | 1982-12-09 | 3000.00 | NULL |     20 |
+|  7876 | ADAMS | CLERK   | 7788 | 1983-01-12 | 1100.00 | NULL |     20 |
+|  7902 | FORD  | ANALYST | 7566 | 1981-12-03 | 3000.00 | NULL |     20 |
++-------+-------+---------+------+------------+---------+------+--------+
+5 rows in set (0.00 sec)
+
+mysql> selec^C* from emp where deptno=(select deptno from dept where loc="DALLAS");
+mysql> ^C
+mysql> ^C
+mysql> update emp set ename="JON JONES" where EMPNO=7566;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from emp;
++-------+-----------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME     | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH     | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN     | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD      | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JON JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN    | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE     | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK     | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT     | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING      | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER    | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS     | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES     | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD      | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER    | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select * from emp where sal=max(sal);
+ERROR 1111 (HY000): Invalid use of group function
+mysql> select * from emp where sal=(select max(sal) from emp);
++-------+-------+-----------+------+------------+---------+------+--------+
+| EMPNO | ENAME | JOB       | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+-------+-----------+------+------------+---------+------+--------+
+|  7839 | KING  | PRESIDENT | NULL | 1981-11-17 | 5000.00 | NULL |     10 |
++-------+-------+-----------+------+------------+---------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where sal=(select max(sal) from emp);^X^C
+mysql> ^C
+mysql> ^C
+mysql> select * from emp order by sal;
++-------+-----------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME     | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH     | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7900 | JAMES     | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7876 | ADAMS     | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7521 | WARD      | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7654 | MARTIN    | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7934 | MILLER    | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
+|  7844 | TURNER    | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7499 | ALLEN     | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7782 | CLARK     | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7698 | BLAKE     | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7566 | JON JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7788 | SCOTT     | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7902 | FORD      | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7839 | KING      | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select * from emp order by sal sec;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sec' at line 1
+mysql> select * from emp order by sal dsec;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dsec' at line 1
+mysql> select * from emp order by sal dec;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dec' at line 1
+mysql> select * from emp order by sal limit -1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-1' at line 1
+mysql> select * from emp order by sal desc;
++-------+-----------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME     | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+|  7839 | KING      | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7788 | SCOTT     | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7902 | FORD      | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7566 | JON JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7698 | BLAKE     | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK     | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7499 | ALLEN     | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7844 | TURNER    | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7934 | MILLER    | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
+|  7521 | WARD      | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7654 | MARTIN    | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7876 | ADAMS     | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES     | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7369 | SMITH     | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select * from emp order by sal desc limit 1;
++-------+-------+-----------+------+------------+---------+------+--------+
+| EMPNO | ENAME | JOB       | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+-------+-----------+------+------------+---------+------+--------+
+|  7839 | KING  | PRESIDENT | NULL | 1981-11-17 | 5000.00 | NULL |     10 |
++-------+-------+-----------+------+------------+---------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp order by sal limit 1;
++-------+-------+-------+------+------------+--------+------+--------+
+| EMPNO | ENAME | JOB   | MGR  | HIREDATE   | SAL    | COMM | DEPTNO |
++-------+-------+-------+------+------------+--------+------+--------+
+|  7369 | SMITH | CLERK | 7902 | 1980-12-17 | 800.00 | NULL |     20 |
++-------+-------+-------+------+------------+--------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp order by sal limit 2;
++-------+-------+-------+------+------------+--------+------+--------+
+| EMPNO | ENAME | JOB   | MGR  | HIREDATE   | SAL    | COMM | DEPTNO |
++-------+-------+-------+------+------------+--------+------+--------+
+|  7369 | SMITH | CLERK | 7902 | 1980-12-17 | 800.00 | NULL |     20 |
+|  7900 | JAMES | CLERK | 7698 | 1981-12-03 | 950.00 | NULL |     30 |
++-------+-------+-------+------+------------+--------+------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where sal<(select max(sal) from emp);
++-------+-----------+----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME     | JOB      | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+-----------+----------+------+------------+---------+---------+--------+
+|  7369 | SMITH     | CLERK    | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN     | SALESMAN | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD      | SALESMAN | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JON JONES | MANAGER  | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN    | SALESMAN | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE     | MANAGER  | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK     | MANAGER  | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT     | ANALYST  | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7844 | TURNER    | SALESMAN | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS     | CLERK    | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES     | CLERK    | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD      | ANALYST  | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER    | CLERK    | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+-----------+----------+------+------------+---------+---------+--------+
+13 rows in set (0.00 sec)
+
+mysql> select max(sal) from emp where sal<(select max(sal) from emp);
++----------+
+| max(sal) |
++----------+
+|  3000.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where sal=(select max(sal) from emp where sal<(select max(sal) from emp));
++-------+-------+---------+------+------------+---------+------+--------+
+| EMPNO | ENAME | JOB     | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+-------+---------+------+------------+---------+------+--------+
+|  7788 | SCOTT | ANALYST | 7566 | 1982-12-09 | 3000.00 | NULL |     20 |
+|  7902 | FORD  | ANALYST | 7566 | 1981-12-03 | 3000.00 | NULL |     20 |
++-------+-------+---------+------+------------+---------+------+--------+
+2 rows in set (0.00 sec)
+
+mysql>
+mysql>mysql> select * from employees group by dept_id;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'employee_dept.employees.emp_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select ^Crom employees group by dept_id;
+mysql> select sum(dept_id)emp_name,salary from employees group by salary;
++----------+----------+
+| emp_name | salary   |
++----------+----------+
+|        1 | 45000.00 |
+|        2 | 55000.00 |
+|        1 | 65000.00 |
+|        3 | 35000.00 |
+|        4 | 60000.00 |
+|        2 | 48000.00 |
+|        1 | 80000.00 |
+|        3 | 52000.00 |
+|        4 | 40000.00 |
+|        1 | 70000.00 |
+|        3 | 30000.00 |
+|        2 | 75000.00 |
++----------+----------+
+12 rows in set (0.00 sec)
+
+mysql> select sum(dept_id),emp_name,salary from employees group by salary order by dept_id;
+ERROR 1055 (42000): Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'employee_dept.employees.emp_name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select sum(dept_id),emp_n^Ce,salary from employees group by salary order by dept_id;
+mysql> ^C
+mysql> SELECT salary, SUM(dept_id)
+    -> FROM employees
+    -> GROUP BY salary
+    -> ORDER BY salary;
++----------+--------------+
+| salary   | SUM(dept_id) |
++----------+--------------+
+| 30000.00 |            3 |
+| 35000.00 |            3 |
+| 40000.00 |            4 |
+| 45000.00 |            1 |
+| 48000.00 |            2 |
+| 52000.00 |            3 |
+| 55000.00 |            2 |
+| 60000.00 |            4 |
+| 65000.00 |            1 |
+| 70000.00 |            1 |
+| 75000.00 |            2 |
+| 80000.00 |            1 |
++----------+--------------+
+12 rows in set (0.00 sec)
+
+mysql> SELECT salary, SUM(dept_id)
+    -> FROM employees
+    -> GROUP BY salary
+    -> ORDER BY dept_id;
+ERROR 1055 (42000): Expression #1 of ORDER BY clause is not in GROUP BY clause and contains nonaggregated column 'employee_dept.employees.dept_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> SELECT salary, SUM(dept_id)
+    -> FROM employees
+    -> GROUP BY salary
+    -> ^COUP BY salary
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> SELECT AVG(salary),dept_id
+    -> FROM employees
+    -> GROUP BY dept_id
+    -> ORDER BY dept_id;
++--------------+---------+
+| AVG(salary)  | dept_id |
++--------------+---------+
+| 65000.000000 |       1 |
+| 59333.333333 |       2 |
+| 39000.000000 |       3 |
+| 50000.000000 |       4 |
++--------------+---------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employees;
++--------+----------+------+----------+---------+
+| emp_id | emp_name | age  | salary   | dept_id |
++--------+----------+------+----------+---------+
+|    101 | Rahul    |   25 | 45000.00 |       1 |
+|    102 | Priya    |   28 | 55000.00 |       2 |
+|    103 | Amit     |   32 | 65000.00 |       1 |
+|    104 | Sneha    |   24 | 35000.00 |       3 |
+|    105 | Karan    |   30 | 60000.00 |       4 |
+|    106 | Neha     |   27 | 48000.00 |       2 |
+|    107 | Rohit    |   35 | 80000.00 |       1 |
+|    108 | Pooja    |   29 | 52000.00 |       3 |
+|    109 | Vikas    |   26 | 40000.00 |       4 |
+|    110 | Anjali   |   31 | 70000.00 |       1 |
+|    111 | Suresh   |   23 | 30000.00 |       3 |
+|    112 | Meera    |   33 | 75000.00 |       2 |
++--------+----------+------+----------+---------+
+12 rows in set (0.00 sec)
+
+mysql> create database myemp;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use myemp;
+Database changed
+mysql> source C:\Users\iacsd\Downloads\demobldmysql.sql
+Query OK, 0 rows affected, 3 warnings (0.03 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show tables;
++-----------------+
+| Tables_in_myemp |
++-----------------+
+| bonus           |
+| dept            |
+| dummy           |
+| emp             |
+| salgrade        |
++-----------------+
+5 rows in set (0.01 sec)
+
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select year(hiredate) from emp;
++----------------+
+| year(hiredate) |
++----------------+
+|           1980 |
+|           1981 |
+|           1981 |
+|           1981 |
+|           1981 |
+|           1981 |
+|           1981 |
+|           1982 |
+|           1981 |
+|           1981 |
+|           1983 |
+|           1981 |
+|           1981 |
+|           1982 |
++----------------+
+14 rows in set (0.00 sec)
+
+mysql> select year(hiredate),avg(salaryy) from emp group by year(hiredate) order by year(hiredate);
+ERROR 1054 (42S22): Unknown column 'salaryy' in 'field list'
+mysql> select year(hiredate),avg(salary) from emp group by year(hiredate) order by year(hiredate);
+ERROR 1054 (42S22): Unknown column 'salary' in 'field list'
+mysql> select year(hiredate),avg(sal) from emp group by year(hiredate) order by year(hiredate);
++----------------+-------------+
+| year(hiredate) | avg(sal)    |
++----------------+-------------+
+|           1980 |  800.000000 |
+|           1981 | 2282.500000 |
+|           1982 | 2150.000000 |
+|           1983 | 1100.000000 |
++----------------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> select year(hiredate),avg(sal) from emp group by year(hiredate);
++----------------+-------------+
+| year(hiredate) | avg(sal)    |
++----------------+-------------+
+|           1980 |  800.000000 |
+|           1981 | 2282.500000 |
+|           1982 | 2150.000000 |
+|           1983 | 1100.000000 |
++----------------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> select year(hiredate),count() from emp group by year(hiredate);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') from emp group by year(hiredate)' at line 1
+mysql> select year(hiredate),count(ename) from emp group by year(hiredate);
++----------------+--------------+
+| year(hiredate) | count(ename) |
++----------------+--------------+
+|           1980 |            1 |
+|           1981 |           10 |
+|           1982 |            2 |
+|           1983 |            1 |
++----------------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> select deptno,count(ename) from emp group by year(hiredate);
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'myemp.emp.DEPTNO' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select deptno,count(ename) from emp group by deptno;
++--------+--------------+
+| deptno | count(ename) |
++--------+--------------+
+|     20 |            5 |
+|     30 |            6 |
+|     10 |            3 |
++--------+--------------+
+3 rows in set (0.00 sec)
+
+mysql> select deptno,count(ename) as "no of employees" from emp group by deptno;
++--------+-----------------+
+| deptno | no of employees |
++--------+-----------------+
+|     20 |               5 |
+|     30 |               6 |
+|     10 |               3 |
++--------+-----------------+
+3 rows in set (0.00 sec)
+
+mysql> export
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employee_dept      |
+| information_schema |
+| mango              |
+| myemp              |
+| mysql              |
+| performance_schema |
+| sakila             |
+| student_db         |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.00 sec)
+
+mysql> export employee_dept;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'export employee_dept' at line 1
+mysql> select deptno,count(comm) from emp group by deptno;
++--------+-------------+
+| deptno | count(comm) |
++--------+-------------+
+|     20 |           0 |
+|     30 |           4 |
+|     10 |           0 |
++--------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> select deptno,count(deptno),count(comm) from emp group by deptno;
++--------+---------------+-------------+
+| deptno | count(deptno) | count(comm) |
++--------+---------------+-------------+
+|     20 |             5 |           0 |
+|     30 |             6 |           4 |
+|     10 |             3 |           0 |
++--------+---------------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> select deptno as "department name",count(deptno) as "no of employees",count(comm) as "no of commission" from emp group by deptno;
++-----------------+-----------------+------------------+
+| department name | no of employees | no of commission |
++-----------------+-----------------+------------------+
+|              20 |               5 |                0 |
+|              30 |               6 |                4 |
+|              10 |               3 |                0 |
++-----------------+-----------------+------------------+
+3 rows in set (0.00 sec)
+
+mysql> select deptno as "department name",count(job) as ""^Count(comm) as "no of commission" from emp group by deptno;
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> select deptno,count(deptno),job,count(job)from employee order by deptno;
+ERROR 1146 (42S02): Table 'myemp.employee' doesn't exist
+mysql> select deptno,count(deptno),job,count(job) from employee order by deptno;
+ERROR 1146 (42S02): Table 'myemp.employee' doesn't exist
+mysql> select deptno,count(deptno),job,count(job) from emp order by deptno;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'myemp.emp.DEPTNO'; this is incompatible with sql_mode=only_full_group_by
+mysql> select deptno,count(deptno),job,count(job) from emp order by job,deptno;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'myemp.emp.DEPTNO'; this is incompatible with sql_mode=only_full_group_by
+mysql> select deptno,count(deptno),job,count(job) from emp group by deptno;
+ERROR 1055 (42000): Expression #3 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'myemp.emp.JOB' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select deptno,job,count(job) from emp group by deptno,job;
++--------+-----------+------------+
+| deptno | job       | count(job) |
++--------+-----------+------------+
+|     20 | CLERK     |          2 |
+|     30 | SALESMAN  |          4 |
+|     20 | MANAGER   |          1 |
+|     30 | MANAGER   |          1 |
+|     10 | MANAGER   |          1 |
+|     20 | ANALYST   |          2 |
+|     10 | PRESIDENT |          1 |
+|     30 | CLERK     |          1 |
+|     10 | CLERK     |          1 |
++--------+-----------+------------+
+9 rows in set (0.00 sec)
+
+mysql> select deptno,job,count(job) from emp group by deptno,job  order by deptno;
++--------+-----------+------------+
+| deptno | job       | count(job) |
++--------+-----------+------------+
+|     10 | CLERK     |          1 |
+|     10 | MANAGER   |          1 |
+|     10 | PRESIDENT |          1 |
+|     20 | ANALYST   |          2 |
+|     20 | CLERK     |          2 |
+|     20 | MANAGER   |          1 |
+|     30 | CLERK     |          1 |
+|     30 | MANAGER   |          1 |
+|     30 | SALESMAN  |          4 |
++--------+-----------+------------+
+9 rows in set (0.00 sec)
+
+mysql> ---find the dept where more than 1 clerk is theree.
+    -> ^C
+mysql> ^C
+mysql> select dept from emp were job="clerk" and (select * from emp where job="clerk")>1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'job="clerk" and (select * from emp where job="clerk")>1' at line 1
+mysql> select dept from emp where (select * from emp where job="clerk")>1;
+ERROR 1054 (42S22): Unknown column 'dept' in 'field list'
+mysql> select deptno from emp where (select * from emp where job="clerk")>1;
+ERROR 1241 (21000): Operand should contain 8 column(s)
+mysql> select deptno from emp where 1<(select * from emp where job="clerk");
+ERROR 1241 (21000): Operand should contain 1 column(s)
+mysql> select deptno from emp wheselect * from emp where job="clerk")^C 1<(select * from emp where job="clerk");
+mysql> ^C
+mysql> select * from emp where job="clerk"
+    -> ;
++-------+--------+-------+------+------------+---------+------+--------+
+| EMPNO | ENAME  | JOB   | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+--------+-------+------+------------+---------+------+--------+
+|  7369 | SMITH  | CLERK | 7902 | 1980-12-17 |  800.00 | NULL |     20 |
+|  7876 | ADAMS  | CLERK | 7788 | 1983-01-12 | 1100.00 | NULL |     20 |
+|  7900 | JAMES  | CLERK | 7698 | 1981-12-03 |  950.00 | NULL |     30 |
+|  7934 | MILLER | CLERK | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
++-------+--------+-------+------+------------+---------+------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where (select * from emp where job="clerk")>1;
+ERROR 1241 (21000): Operand should contain 8 column(s)
+mysql> SELECT *
+    -> FROM emp
+    -> WHERE job = 'CLERK'
+    -> AND (SELECT COUNT(*) FROM emp WHERE job = 'CLERK') > 1;^C
+mysql> ^C
+mysql> select * from emp where (select count(*) from emp where job="clerk")>1;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select * from emp where job="clerk" and (select count(*) from emp where job="clerk")>1;
++-------+--------+-------+------+------------+---------+------+--------+
+| EMPNO | ENAME  | JOB   | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+--------+-------+------+------------+---------+------+--------+
+|  7369 | SMITH  | CLERK | 7902 | 1980-12-17 |  800.00 | NULL |     20 |
+|  7876 | ADAMS  | CLERK | 7788 | 1983-01-12 | 1100.00 | NULL |     20 |
+|  7900 | JAMES  | CLERK | 7698 | 1981-12-03 |  950.00 | NULL |     30 |
+|  7934 | MILLER | CLERK | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
++-------+--------+-------+------+------------+---------+------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where job="clerk" and (select count(*) from emp where job="clerk")>=2;
++-------+--------+-------+------+------------+---------+------+--------+
+| EMPNO | ENAME  | JOB   | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+--------+-------+------+------------+---------+------+--------+
+|  7369 | SMITH  | CLERK | 7902 | 1980-12-17 |  800.00 | NULL |     20 |
+|  7876 | ADAMS  | CLERK | 7788 | 1983-01-12 | 1100.00 | NULL |     20 |
+|  7900 | JAMES  | CLERK | 7698 | 1981-12-03 |  950.00 | NULL |     30 |
+|  7934 | MILLER | CLERK | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
++-------+--------+-------+------+------------+---------+------+--------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT *
+    -> FROM emp
+    -> WHERE job = 'CLERK'
+    -> AND (SELECT COUNT(*) FROM emp WHERE job = 'CLERK') > 1;
++-------+--------+-------+------+------------+---------+------+--------+
+| EMPNO | ENAME  | JOB   | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+--------+-------+------+------------+---------+------+--------+
+|  7369 | SMITH  | CLERK | 7902 | 1980-12-17 |  800.00 | NULL |     20 |
+|  7876 | ADAMS  | CLERK | 7788 | 1983-01-12 | 1100.00 | NULL |     20 |
+|  7900 | JAMES  | CLERK | 7698 | 1981-12-03 |  950.00 | NULL |     30 |
+|  7934 | MILLER | CLERK | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
++-------+--------+-------+------+------------+---------+------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employee where job="clerk";
+ERROR 1146 (42S02): Table 'myemp.employee' doesn't exist
+mysql> select * from emp where job="clerk";
++-------+--------+-------+------+------------+---------+------+--------+
+| EMPNO | ENAME  | JOB   | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+--------+-------+------+------------+---------+------+--------+
+|  7369 | SMITH  | CLERK | 7902 | 1980-12-17 |  800.00 | NULL |     20 |
+|  7876 | ADAMS  | CLERK | 7788 | 1983-01-12 | 1100.00 | NULL |     20 |
+|  7900 | JAMES  | CLERK | 7698 | 1981-12-03 |  950.00 | NULL |     30 |
+|  7934 | MILLER | CLERK | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
++-------+--------+-------+------+------------+---------+------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where job="clerk" and (select count(*) from emp where job="clerk")>1;
++-------+--------+-------+------+------------+---------+------+--------+
+| EMPNO | ENAME  | JOB   | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+--------+-------+------+------------+---------+------+--------+
+|  7369 | SMITH  | CLERK | 7902 | 1980-12-17 |  800.00 | NULL |     20 |
+|  7876 | ADAMS  | CLERK | 7788 | 1983-01-12 | 1100.00 | NULL |     20 |
+|  7900 | JAMES  | CLERK | 7698 | 1981-12-03 |  950.00 | NULL |     30 |
+|  7934 | MILLER | CLERK | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
++-------+--------+-------+------+------------+---------+------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where job="clerk" and group by job having count(*)>1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group by job having count(*)>1' at line 1
+mysql> select * from emp where job="clerk" group by job having count(*)>1;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'myemp.emp.EMPNO' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select * from emp where job="clerk" and group by deptno having count(*)>1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group by deptno having count(*)>1' at line 1
+mysql> select * from emp where job="clerk"  group by deptno having count(job)>1;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'myemp.emp.EMPNO' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select * from emp where job="clerk"  group by job having count(deptno)>1;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'myemp.emp.EMPNO' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select * from emp where job="clerk" and group by job having count(deptno)>1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group by job having count(deptno)>1' at line 1
+mysql> select * from emp where job="clerk" and group by job having count(deptno)>1;^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> select * from emp group by job;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'myemp.emp.EMPNO' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select * from emp group by count(job);
+ERROR 1111 (HY000): Invalid use of group function
+mysql> select job,count(job) from emp group by count(job);
+ERROR 1056 (42000): Can't group on 'count(job)'
+mysql> select job,count(empno) from emp group by count(job);
+ERROR 1111 (HY000): Invalid use of group function
+mysql> select job,count(empno) from emp group by job;
++-----------+--------------+
+| job       | count(empno) |
++-----------+--------------+
+| CLERK     |            4 |
+| SALESMAN  |            4 |
+| MANAGER   |            3 |
+| ANALYST   |            2 |
+| PRESIDENT |            1 |
++-----------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> select job from emp group by job;
++-----------+
+| job       |
++-----------+
+| CLERK     |
+| SALESMAN  |
+| MANAGER   |
+| ANALYST   |
+| PRESIDENT |
++-----------+
+5 rows in set (0.00 sec)
+
+mysql> select job from emp where job=group by job;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group by job' at line 1
+mysql>
+mysql> select job from emp where job="clerk" and group by job;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group by job' at line 1
+mysql> select job from emp where job="clerk" group by job;
++-------+
+| job   |
++-------+
+| CLERK |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select job from emp where job="clerk" group by job having count(job)>2;
++-------+
+| job   |
++-------+
+| CLERK |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select job,deptno from emp where job="clerk" group by job having count(deptno)>1;
+ERROR 1055 (42000): Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'myemp.emp.DEPTNO' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select job,deptno from emp where job="clerk" group by job;
+ERROR 1055 (42000): Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'myemp.emp.DEPTNO' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select job,deptno from emp where group by job;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group by job' at line 1
+mysql> select job from emp where group by job;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group by job' at line 1
+mysql> select job from emp where group by count(job);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group by count(job)' at line 1
+mysql> select * from emp where group by job;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group by job' at line 1
+mysql> select job from emp group by job
+    -> ;
++-----------+
+| job       |
++-----------+
+| CLERK     |
+| SALESMAN  |
+| MANAGER   |
+| ANALYST   |
+| PRESIDENT |
++-----------+
+5 rows in set (0.00 sec)
+
+mysql> select job,count(detno) from emp group by job
+    -> ;
+ERROR 1054 (42S22): Unknown column 'detno' in 'field list'
+mysql> select job,count(detno) from emp group by job;
+ERROR 1054 (42S22): Unknown column 'detno' in 'field list'
+mysql> select job,count(deptno) from emp group by job;
++-----------+---------------+
+| job       | count(deptno) |
++-----------+---------------+
+| CLERK     |             4 |
+| SALESMAN  |             4 |
+| MANAGER   |             3 |
+| ANALYST   |             2 |
+| PRESIDENT |             1 |
++-----------+---------------+
+5 rows in set (0.00 sec)
+
+mysql> select job,count(deptno) from emp group by jdeptno;
+ERROR 1054 (42S22): Unknown column 'jdeptno' in 'group statement'
+mysql> select job,count(deptno) from emp group by deptno;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'myemp.emp.JOB' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select job,deptno from emp group by deptno;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'myemp.emp.JOB' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select deptno from emp group by deptno;
++--------+
+| deptno |
++--------+
+|     20 |
+|     30 |
+|     10 |
++--------+
+3 rows in set (0.00 sec)
+
+mysql> select deptno from emp where job="clerk" group by deptno;
++--------+
+| deptno |
++--------+
+|     20 |
+|     30 |
+|     10 |
++--------+
+3 rows in set (0.00 sec)
+
+mysql> select deptno,job from emp where job="clerk" group by deptno having count(job)>1;
++--------+-------+
+| deptno | job   |
++--------+-------+
+|     20 | CLERK |
++--------+-------+
+1 row in set (0.00 sec)
+
+mysql> select deptno,job,count(job) from emp where job="clerk" group by deptno having count(job)>1;
++--------+-------+------------+
+| deptno | job   | count(job) |
++--------+-------+------------+
+|     20 | CLERK |          2 |
++--------+-------+------------+
+1 row in set (0.00 sec)
+
+mysql> show tables;
++-----------------+
+| Tables_in_myemp |
++-----------------+
+| bonus           |
+| dept            |
+| dummy           |
+| emp             |
+| salgrade        |
++-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from dept;
++--------+------------+----------+
+| DEPTNO | DNAME      | LOC      |
++--------+------------+----------+
+|     10 | ACCOUNTING | NEW YORK |
+|     20 | RESEARCH   | DALLAS   |
+|     30 | SALES      | CHICAGO  |
+|     40 | OPERATIONS | BOSTON   |
++--------+------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where deptno=(select deptno from dept where loc="DALLAS")
+    -> ;
++-------+-------+---------+------+------------+---------+------+--------+
+| EMPNO | ENAME | JOB     | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+-------+---------+------+------------+---------+------+--------+
+|  7369 | SMITH | CLERK   | 7902 | 1980-12-17 |  800.00 | NULL |     20 |
+|  7566 | JONES | MANAGER | 7839 | 1981-04-02 | 2975.00 | NULL |     20 |
+|  7788 | SCOTT | ANALYST | 7566 | 1982-12-09 | 3000.00 | NULL |     20 |
+|  7876 | ADAMS | CLERK   | 7788 | 1983-01-12 | 1100.00 | NULL |     20 |
+|  7902 | FORD  | ANALYST | 7566 | 1981-12-03 | 3000.00 | NULL |     20 |
++-------+-------+---------+------+------------+---------+------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from emp where deptno=(select deptno from dept where loc="DALLAS");
++-------+-------+---------+------+------------+---------+------+--------+
+| EMPNO | ENAME | JOB     | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+-------+---------+------+------------+---------+------+--------+
+|  7369 | SMITH | CLERK   | 7902 | 1980-12-17 |  800.00 | NULL |     20 |
+|  7566 | JONES | MANAGER | 7839 | 1981-04-02 | 2975.00 | NULL |     20 |
+|  7788 | SCOTT | ANALYST | 7566 | 1982-12-09 | 3000.00 | NULL |     20 |
+|  7876 | ADAMS | CLERK   | 7788 | 1983-01-12 | 1100.00 | NULL |     20 |
+|  7902 | FORD  | ANALYST | 7566 | 1981-12-03 | 3000.00 | NULL |     20 |
++-------+-------+---------+------+------------+---------+------+--------+
+5 rows in set (0.00 sec)
+
+mysql> selec^C* from emp where deptno=(select deptno from dept where loc="DALLAS");
+mysql> ^C
+mysql> ^C
+mysql> update emp set ename="JON JONES" where EMPNO=7566;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from emp;
++-------+-----------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME     | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH     | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN     | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD      | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JON JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN    | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE     | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK     | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT     | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING      | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER    | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS     | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES     | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD      | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER    | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select * from emp where sal=max(sal);
+ERROR 1111 (HY000): Invalid use of group function
+mysql> select * from emp where sal=(select max(sal) from emp);
++-------+-------+-----------+------+------------+---------+------+--------+
+| EMPNO | ENAME | JOB       | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+-------+-----------+------+------------+---------+------+--------+
+|  7839 | KING  | PRESIDENT | NULL | 1981-11-17 | 5000.00 | NULL |     10 |
++-------+-------+-----------+------+------------+---------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where sal=(select max(sal) from emp);^X^C
+mysql> ^C
+mysql> ^C
+mysql> select * from emp order by sal;
++-------+-----------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME     | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH     | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7900 | JAMES     | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7876 | ADAMS     | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7521 | WARD      | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7654 | MARTIN    | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7934 | MILLER    | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
+|  7844 | TURNER    | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7499 | ALLEN     | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7782 | CLARK     | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7698 | BLAKE     | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7566 | JON JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7788 | SCOTT     | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7902 | FORD      | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7839 | KING      | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select * from emp order by sal sec;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sec' at line 1
+mysql> select * from emp order by sal dsec;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dsec' at line 1
+mysql> select * from emp order by sal dec;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dec' at line 1
+mysql> select * from emp order by sal limit -1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-1' at line 1
+mysql> select * from emp order by sal desc;
++-------+-----------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME     | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+|  7839 | KING      | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7788 | SCOTT     | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7902 | FORD      | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7566 | JON JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7698 | BLAKE     | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK     | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7499 | ALLEN     | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7844 | TURNER    | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7934 | MILLER    | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
+|  7521 | WARD      | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7654 | MARTIN    | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7876 | ADAMS     | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES     | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7369 | SMITH     | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select * from emp order by sal desc limit 1;
++-------+-------+-----------+------+------------+---------+------+--------+
+| EMPNO | ENAME | JOB       | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+-------+-----------+------+------------+---------+------+--------+
+|  7839 | KING  | PRESIDENT | NULL | 1981-11-17 | 5000.00 | NULL |     10 |
++-------+-------+-----------+------+------------+---------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp order by sal limit 1;
++-------+-------+-------+------+------------+--------+------+--------+
+| EMPNO | ENAME | JOB   | MGR  | HIREDATE   | SAL    | COMM | DEPTNO |
++-------+-------+-------+------+------------+--------+------+--------+
+|  7369 | SMITH | CLERK | 7902 | 1980-12-17 | 800.00 | NULL |     20 |
++-------+-------+-------+------+------------+--------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp order by sal limit 2;
++-------+-------+-------+------+------------+--------+------+--------+
+| EMPNO | ENAME | JOB   | MGR  | HIREDATE   | SAL    | COMM | DEPTNO |
++-------+-------+-------+------+------------+--------+------+--------+
+|  7369 | SMITH | CLERK | 7902 | 1980-12-17 | 800.00 | NULL |     20 |
+|  7900 | JAMES | CLERK | 7698 | 1981-12-03 | 950.00 | NULL |     30 |
++-------+-------+-------+------+------------+--------+------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where sal<(select max(sal) from emp);
++-------+-----------+----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME     | JOB      | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+-----------+----------+------+------------+---------+---------+--------+
+|  7369 | SMITH     | CLERK    | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN     | SALESMAN | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD      | SALESMAN | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JON JONES | MANAGER  | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN    | SALESMAN | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE     | MANAGER  | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK     | MANAGER  | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT     | ANALYST  | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7844 | TURNER    | SALESMAN | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS     | CLERK    | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES     | CLERK    | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD      | ANALYST  | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER    | CLERK    | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+-----------+----------+------+------------+---------+---------+--------+
+13 rows in set (0.00 sec)
+
+mysql> select max(sal) from emp where sal<(select max(sal) from emp);
++----------+
+| max(sal) |
++----------+
+|  3000.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where sal=(select max(sal) from emp where sal<(select max(sal) from emp));
++-------+-------+---------+------+------------+---------+------+--------+
+| EMPNO | ENAME | JOB     | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+-------+---------+------+------------+---------+------+--------+
+|  7788 | SCOTT | ANALYST | 7566 | 1982-12-09 | 3000.00 | NULL |     20 |
+|  7902 | FORD  | ANALYST | 7566 | 1981-12-03 | 3000.00 | NULL |     20 |
++-------+-------+---------+------+------------+---------+------+--------+
+2 rows in set (0.00 sec)
+
+mysql>
+mysql> show tables;
++-----------------+
+| Tables_in_myemp |
++-----------------+
+| bonus           |
+| dept            |
+| dummy           |
+| emp             |
+| salgrade        |
++-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from dept;
++--------+------------+----------+
+| DEPTNO | DNAME      | LOC      |
++--------+------------+----------+
+|     10 | ACCOUNTING | NEW YORK |
+|     20 | RESEARCH   | DALLAS   |
+|     30 | SALES      | CHICAGO  |
+|     40 | OPERATIONS | BOSTON   |
++--------+------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from salgrade;
++-------+-------+-------+
+| GRADE | LOSAL | HISAL |
++-------+-------+-------+
+|     1 |   700 |  1200 |
+|     2 |  1201 |  1400 |
+|     3 |  1401 |  2000 |
+|     4 |  2001 |  3000 |
+|     5 |  3001 |  9999 |
++-------+-------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from bonus;
+Empty set (0.00 sec)
+
+mysql> select MGR from emp where ename="SMITH";
++------+
+| MGR  |
++------+
+| 7902 |
++------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where empno=(select MGR from emp where ename="SMITH");
++-------+-------+---------+------+------------+---------+------+--------+
+| EMPNO | ENAME | JOB     | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+-------+---------+------+------------+---------+------+--------+
+|  7902 | FORD  | ANALYST | 7566 | 1981-12-03 | 3000.00 | NULL |     20 |
++-------+-------+---------+------+------------+---------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from dept;
++--------+------------+----------+
+| DEPTNO | DNAME      | LOC      |
++--------+------------+----------+
+|     10 | ACCOUNTING | NEW YORK |
+|     20 | RESEARCH   | DALLAS   |
+|     30 | SALES      | CHICAGO  |
+|     40 | OPERATIONS | BOSTON   |
++--------+------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp;
++-------+-----------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME     | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH     | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN     | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD      | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JON JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN    | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE     | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK     | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT     | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING      | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER    | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS     | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES     | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD      | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER    | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select * from dept where deptno not in (select deptno from dept);
+Empty set (0.00 sec)
+
+mysql> select deptno from dept;
++--------+
+| deptno |
++--------+
+|     10 |
+|     20 |
+|     30 |
+|     40 |
++--------+
+4 rows in set (0.00 sec)
+
+mysql> select deptno from emp;
++--------+
+| deptno |
++--------+
+|     20 |
+|     30 |
+|     30 |
+|     20 |
+|     30 |
+|     30 |
+|     10 |
+|     20 |
+|     10 |
+|     30 |
+|     20 |
+|     30 |
+|     20 |
+|     10 |
++--------+
+14 rows in set (0.00 sec)
+
+mysql> select deptno from dept where deptno not in (select deptno from emp);
++--------+
+| deptno |
++--------+
+|     40 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select * from dept where deptno not in (select deptno from emp);
++--------+------------+--------+
+| DEPTNO | DNAME      | LOC    |
++--------+------------+--------+
+|     40 | OPERATIONS | BOSTON |
++--------+------------+--------+
+1 row in set (0.00 sec)
+
+mysql> select MGR from emp;
++------+
+| MGR  |
++------+
+| 7902 |
+| 7698 |
+| 7698 |
+| 7839 |
+| 7698 |
+| 7839 |
+| 7839 |
+| 7566 |
+| NULL |
+| 7698 |
+| 7788 |
+| 7698 |
+| 7566 |
+| 7782 |
++------+
+14 rows in set (0.00 sec)
+
+mysql> select * from emp where empno in (select MGR from emp);
++-------+-----------+-----------+------+------------+---------+------+--------+
+| EMPNO | ENAME     | JOB       | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+-----------+-----------+------+------------+---------+------+--------+
+|  7566 | JON JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 | NULL |     20 |
+|  7698 | BLAKE     | MANAGER   | 7839 | 1981-05-01 | 2850.00 | NULL |     30 |
+|  7782 | CLARK     | MANAGER   | 7839 | 1981-06-09 | 2450.00 | NULL |     10 |
+|  7788 | SCOTT     | ANALYST   | 7566 | 1982-12-09 | 3000.00 | NULL |     20 |
+|  7839 | KING      | PRESIDENT | NULL | 1981-11-17 | 5000.00 | NULL |     10 |
+|  7902 | FORD      | ANALYST   | 7566 | 1981-12-03 | 3000.00 | NULL |     20 |
++-------+-----------+-----------+------+------------+---------+------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select * from emp where empno = (select MGR from emp);
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select * from emp where empno in (select MGR from emp);
++-------+-----------+-----------+------+------------+---------+------+--------+
+| EMPNO | ENAME     | JOB       | MGR  | HIREDATE   | SAL     | COMM | DEPTNO |
++-------+-----------+-----------+------+------------+---------+------+--------+
+|  7566 | JON JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 | NULL |     20 |
+|  7698 | BLAKE     | MANAGER   | 7839 | 1981-05-01 | 2850.00 | NULL |     30 |
+|  7782 | CLARK     | MANAGER   | 7839 | 1981-06-09 | 2450.00 | NULL |     10 |
+|  7788 | SCOTT     | ANALYST   | 7566 | 1982-12-09 | 3000.00 | NULL |     20 |
+|  7839 | KING      | PRESIDENT | NULL | 1981-11-17 | 5000.00 | NULL |     10 |
+|  7902 | FORD      | ANALYST   | 7566 | 1981-12-03 | 3000.00 | NULL |     20 |
++-------+-----------+-----------+------+------------+---------+------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select * from emp where empno not in (select MGR from emp);
+Empty set (0.00 sec)
+
+mysql> select * from emp where empno not in (select MGR from emp);^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> select deptno from emp;
++--------+
+| deptno |
++--------+
+|     20 |
+|     30 |
+|     30 |
+|     20 |
+|     30 |
+|     30 |
+|     10 |
+|     20 |
+|     10 |
+|     30 |
+|     20 |
+|     30 |
+|     20 |
+|     10 |
++--------+
+14 rows in set (0.00 sec)
+
+mysql> select distinct(deptno) from emp;
++--------+
+| deptno |
++--------+
+|     20 |
+|     30 |
+|     10 |
++--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from emp where deptno in (select distinct(deptno) from emp);
++-------+-----------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME     | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH     | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN     | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD      | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JON JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN    | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE     | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK     | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT     | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING      | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER    | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS     | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES     | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD      | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER    | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select max(sal) from emp;
++----------+
+| max(sal) |
++----------+
+|  5000.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select max(sal),distinct(deptno) from emp group by distinct(deptno);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct(deptno) from emp group by distinct(deptno)' at line 1
+mysql> select max(sal),deptno from emp group by distinct(deptno);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct(deptno)' at line 1
+mysql> select max(sal),deptno from emp group by distinct(deptno);^C
+mysql> ^C
+mysql> select * from emp where (sal,deptno) in (select max(sal),deptno from emp);
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'myemp.emp.DEPTNO'; this is incompatible with sql_mode=only_full_group_by
+mysql> select distinct(deptno) from emp;
++--------+
+| deptno |
++--------+
+|     20 |
+|     30 |
+|     10 |
++--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from emp where deptno in (select distinct(deptno) from emp);
++-------+-----------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME     | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH     | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN     | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD      | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JON JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN    | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE     | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK     | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT     | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING      | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER    | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS     | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES     | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD      | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER    | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select * from emp where deptno in (select distinct(deptno) from emp) and^A^C
+mysql> ^C
+mysql> select distinct(deptno),sal from emp;
++--------+---------+
+| deptno | sal     |
++--------+---------+
+|     20 |  800.00 |
+|     30 | 1600.00 |
+|     30 | 1250.00 |
+|     20 | 2975.00 |
+|     30 | 2850.00 |
+|     10 | 2450.00 |
+|     20 | 3000.00 |
+|     10 | 5000.00 |
+|     30 | 1500.00 |
+|     20 | 1100.00 |
+|     30 |  950.00 |
+|     10 | 1300.00 |
++--------+---------+
+12 rows in set (0.00 sec)
+
+mysql> select distinct(deptno,sal) from emp;
+ERROR 1241 (21000): Operand should contain 1 column(s)
+mysql> select distinct(deptno),max(sal) from emp;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'myemp.emp.DEPTNO'; this is incompatible with sql_mode=only_full_group_by
+mysql> select max(sal) from emp;
++----------+
+| max(sal) |
++----------+
+|  5000.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select deptno from emp group by deptno;
++--------+
+| deptno |
++--------+
+|     20 |
+|     30 |
+|     10 |
++--------+
+3 rows in set (0.00 sec)
+
+mysql> select deptno from emp group by deptno having max(sal);
++--------+
+| deptno |
++--------+
+|     20 |
+|     30 |
+|     10 |
++--------+
+3 rows in set (0.00 sec)
+
+mysql> select deptno,sal from emp group by deptno having max(sal);
+ERROR 1055 (42000): Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'myemp.emp.SAL' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select deptno,max(sal) from emp group by deptno having max(sal);
++--------+----------+
+| deptno | max(sal) |
++--------+----------+
+|     20 |  3000.00 |
+|     30 |  2850.00 |
+|     10 |  5000.00 |
++--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from emp;
++-------+-----------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME     | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH     | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN     | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD      | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JON JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN    | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE     | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK     | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT     | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING      | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER    | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS     | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES     | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD      | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER    | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select deptno,max(sal) from emp group by deptno having min(sal);
++--------+----------+
+| deptno | max(sal) |
++--------+----------+
+|     20 |  3000.00 |
+|     30 |  2850.00 |
+|     10 |  5000.00 |
++--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select deptno,min(sal) from emp group by deptno having min(sal);
++--------+----------+
+| deptno | min(sal) |
++--------+----------+
+|     20 |   800.00 |
+|     30 |   950.00 |
+|     10 |  1300.00 |
++--------+----------+
+3 rows in set (0.00 sec)
+
+mysql>
+mysql> --how to make a copy of a table?? not views
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '--how to make a copy of a table?? not views' at line 1
+mysql> create table students(select * from emp);
+Query OK, 14 rows affected (0.02 sec)
+Records: 14  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> set autocommit=1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> set autocommit=0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> create table student(select * from emp);
+Query OK, 14 rows affected (0.02 sec)
+Records: 14  Duplicates: 0  Warnings: 0
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show tables;
++-----------------+
+| Tables_in_myemp |
++-----------------+
+| bonus           |
+| dept            |
+| dummy           |
+| emp             |
+| salgrade        |
+| student         |
+| students        |
++-----------------+
+7 rows in set (0.00 sec)
+
+mysql> describe emp;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| EMPNO    | int          | NO   |     | NULL    |       |
+| ENAME    | varchar(10)  | YES  |     | NULL    |       |
+| JOB      | varchar(9)   | YES  |     | NULL    |       |
+| MGR      | int          | YES  |     | NULL    |       |
+| HIREDATE | date         | YES  |     | NULL    |       |
+| SAL      | decimal(7,2) | YES  |     | NULL    |       |
+| COMM     | decimal(7,2) | YES  |     | NULL    |       |
+| DEPTNO   | int          | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> update emp set ename="rakhi" where ename="jon jones";
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | rakhi  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from emp;
++-------+-----------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME     | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH     | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN     | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD      | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JON JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN    | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE     | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK     | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT     | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING      | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER    | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS     | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES     | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD      | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER    | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql>
+14 rows in set (0.00 sec)
+
+mysql> UPDATE emp e
+    -> JOIN dept d ON e.DEPTNO = d.DEPTNO
+    -> SET
+    ->     e.SAL = 30000,
+    ->     d.DNAME = 'TECHNOLOGY'
+    -> WHERE e.EMPNO = 101;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> UPDATE emp e
+    -> JOIN dept d ON e.DEPTNO = d.DEPTNO
+    -> SET
+    ->     e.SAL = 30000,
+    ->     d.DNAME = 'TECHNOLOGY'
+    -> WHERE e.EMPNO = 7900;
+Query OK, 2 rows affected (0.00 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from emp;
++-------+-----------+-----------+------+------------+----------+---------+--------+
+| EMPNO | ENAME     | JOB       | MGR  | HIREDATE   | SAL      | COMM    | DEPTNO |
++-------+-----------+-----------+------+------------+----------+---------+--------+
+|  7369 | SMITH     | CLERK     | 7902 | 1980-12-17 |   800.00 |    NULL |     20 |
+|  7499 | ALLEN     | SALESMAN  | 7698 | 1981-02-20 |  1600.00 |  300.00 |     30 |
+|  7521 | WARD      | SALESMAN  | 7698 | 1981-02-22 |  1250.00 |  500.00 |     30 |
+|  7566 | JON JONES | MANAGER   | 7839 | 1981-04-02 |  2975.00 |    NULL |     20 |
+|  7654 | MARTIN    | SALESMAN  | 7698 | 1981-09-28 |  1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE     | MANAGER   | 7839 | 1981-05-01 |  2850.00 |    NULL |     30 |
+|  7782 | CLARK     | MANAGER   | 7839 | 1981-06-09 |  2450.00 |    NULL |     10 |
+|  7788 | SCOTT     | ANALYST   | 7566 | 1982-12-09 |  3000.00 |    NULL |     20 |
+|  7839 | KING      | PRESIDENT | NULL | 1981-11-17 |  5000.00 |    NULL |     10 |
+|  7844 | TURNER    | SALESMAN  | 7698 | 1981-09-08 |  1500.00 |    0.00 |     30 |
+|  7876 | ADAMS     | CLERK     | 7788 | 1983-01-12 |  1100.00 |    NULL |     20 |
+|  7900 | JAMES     | CLERK     | 7698 | 1981-12-03 | 30000.00 |    NULL |     30 |
+|  7902 | FORD      | ANALYST   | 7566 | 1981-12-03 |  3000.00 |    NULL |     20 |
+|  7934 | MILLER    | CLERK     | 7782 | 1982-01-23 |  1300.00 |    NULL |     10 |
++-------+-----------+-----------+------+------------+----------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select * from dept;
++--------+------------+----------+
+| DEPTNO | DNAME      | LOC      |
++--------+------------+----------+
+|     10 | ACCOUNTING | NEW YORK |
+|     20 | RESEARCH   | DALLAS   |
+|     30 | TECHNOLOGY | CHICAGO  |
+|     40 | OPERATIONS | BOSTON   |
++--------+------------+----------+
+4 rows in set (0.00 sec)
+
+14 rows in set (0.00 sec)
+
+mysql> truncate table student;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select * from student;
+Empty set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from student;
+Empty set (0.00 sec)
+
+//truncate command autocommits.
+mysql> ---savepoint
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '---savepoint' at line 1
+mysql> savepoint <name>
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<name>' at line 1
+mysql> rollback to <name_OF_SAVEPOINT>;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<name_OF_SAVEPOINT>' at line 1
+mysql> select @@autocommit;
++--------------+
+| @@autocommit |
++--------------+
+|            0 |
++--------------+
+1 row in set (0.00 sec)
+
+
+mysql> rollback p3;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'p3' at line 1
+mysql> rollback to p3;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from students;
++-------+-----------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME     | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+|  7369 | NULL      | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | NULL      | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD      | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JON JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN    | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE     | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK     | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT     | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING      | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | NULL      | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | NULL      | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES     | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | NULL      | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | NULL      | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> savepoint p2
+    -> ;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from students;
++-------+-----------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME     | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+|  7369 | NULL      | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | NULL      | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD      | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JON JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN    | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE     | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK     | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT     | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING      | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | NULL      | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | NULL      | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES     | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | NULL      | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | NULL      | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select @@autocommitl
+    -> ^C
+mysql> select @@autocommit;
++--------------+
+| @@autocommit |
++--------------+
+|            0 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> rollback p1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'p1' at line 1
+mysql> rollback to p1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from students;
++-------+-----------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME     | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+|  7369 | NULL      | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | NULL      | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD      | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JON JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN    | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE     | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK     | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT     | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING      | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER    | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS     | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES     | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD      | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER    | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from students;
++-------+-----------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME     | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH     | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN     | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD      | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JON JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN    | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE     | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK     | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT     | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING      | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER    | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS     | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES     | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD      | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER    | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql>
