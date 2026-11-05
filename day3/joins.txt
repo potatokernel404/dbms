@@ -1,0 +1,303 @@
+inner join
+
+select dept.deptno, dname, emp.deptno,ename,sal from dept, emp where dept.deptno = emp.deptno;
+equi/non equi join
+nter password: *********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.46 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employee_dept      |
+| information_schema |
+| mango              |
+| myemp              |
+| mysql              |
+| performance_schema |
+| sakila             |
+| student_db         |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.00 sec)
+
+mysql> use myemp
+Database changed
+mysql> show tables;
++-----------------+
+| Tables_in_myemp |
++-----------------+
+| bonus           |
+| dept            |
+| dummy           |
+| emp             |
+| salgrade        |
+| student         |
+| students        |
++-----------------+
+7 rows in set (0.00 sec)
+
+mysql> select dept.deptno, dname, emp.deptno,ename,sal
+    ->  from dept, emp
+    ->  where dept.deptno = emp.deptno;
++--------+------------+--------+-----------+---------+
+| deptno | dname      | deptno | ename     | sal     |
++--------+------------+--------+-----------+---------+
+|     20 | RESEARCH   |     20 | SMITH     |  800.00 |
+|     30 | SALES      |     30 | ALLEN     | 1600.00 |
+|     30 | SALES      |     30 | WARD      | 1250.00 |
+|     20 | RESEARCH   |     20 | JON JONES | 2975.00 |
+|     30 | SALES      |     30 | MARTIN    | 1250.00 |
+|     30 | SALES      |     30 | BLAKE     | 2850.00 |
+|     10 | ACCOUNTING |     10 | CLARK     | 2450.00 |
+|     20 | RESEARCH   |     20 | SCOTT     | 3000.00 |
+|     10 | ACCOUNTING |     10 | KING      | 5000.00 |
+|     30 | SALES      |     30 | TURNER    | 1500.00 |
+|     20 | RESEARCH   |     20 | ADAMS     | 1100.00 |
+|     30 | SALES      |     30 | JAMES     |  950.00 |
+|     20 | RESEARCH   |     20 | FORD      | 3000.00 |
+|     10 | ACCOUNTING |     10 | MILLER    | 1300.00 |
++--------+------------+--------+-----------+---------+
+14 rows in set (0.00 sec)
+
+mysql> select dept.deptno, dname, emp.deptno,ename,sal from dept, emp where dept.deptno = emp.deptno;
++--------+------------+--------+-----------+---------+
+| deptno | dname      | deptno | ename     | sal     |
++--------+------------+--------+-----------+---------+
+|     20 | RESEARCH   |     20 | SMITH     |  800.00 |
+|     30 | SALES      |     30 | ALLEN     | 1600.00 |
+|     30 | SALES      |     30 | WARD      | 1250.00 |
+|     20 | RESEARCH   |     20 | JON JONES | 2975.00 |
+|     30 | SALES      |     30 | MARTIN    | 1250.00 |
+|     30 | SALES      |     30 | BLAKE     | 2850.00 |
+|     10 | ACCOUNTING |     10 | CLARK     | 2450.00 |
+|     20 | RESEARCH   |     20 | SCOTT     | 3000.00 |
+|     10 | ACCOUNTING |     10 | KING      | 5000.00 |
+|     30 | SALES      |     30 | TURNER    | 1500.00 |
+|     20 | RESEARCH   |     20 | ADAMS     | 1100.00 |
+|     30 | SALES      |     30 | JAMES     |  950.00 |
+|     20 | RESEARCH   |     20 | FORD      | 3000.00 |
+|     10 | ACCOUNTING |     10 | MILLER    | 1300.00 |
++--------+------------+--------+-----------+---------+
+14 rows in set (0.00 sec)
+
+mysql> select dept.deptno, dname, emp.deptno,ename,sal from dept, emp where dept.deptno = emp.deptno AND emp.job="PRESIDENT";
++--------+------------+--------+-------+---------+
+| deptno | dname      | deptno | ename | sal     |
++--------+------------+--------+-------+---------+
+|     10 | ACCOUNTING |     10 | KING  | 5000.00 |
++--------+------------+--------+-------+---------+
+1 row in set (0.00 sec)
+
+mysql> select dept.deptno, dname, emp.deptno,ename,sal from dept, emp where dept.deptno = emp.deptno AND emp.job LIKE "%p%";
++--------+------------+--------+-------+---------+
+| deptno | dname      | deptno | ename | sal     |
++--------+------------+--------+-------+---------+
+|     10 | ACCOUNTING |     10 | KING  | 5000.00 |
++--------+------------+--------+-------+---------+
+1 row in set (0.00 sec)
+
+mysql> select dept.deptno, dname, emp.deptno,ename,sal from dept, emp where dept.deptno = emp.deptno AND emp.job LIKE "%^C;
+mysql> ^C
+mysql> select * from emp;
++-------+-----------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME     | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH     | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN     | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD      | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JON JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN    | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE     | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK     | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT     | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING      | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER    | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS     | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES     | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD      | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER    | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select dept.deptno, dname, emp.deptno,ename,sal from dept, emp where dept.deptno = emp.deptno AND emp.job LIKE "%a%";
++--------+------------+--------+-----------+---------+
+| deptno | dname      | deptno | ename     | sal     |
++--------+------------+--------+-----------+---------+
+|     10 | ACCOUNTING |     10 | CLARK     | 2450.00 |
+|     20 | RESEARCH   |     20 | FORD      | 3000.00 |
+|     20 | RESEARCH   |     20 | SCOTT     | 3000.00 |
+|     20 | RESEARCH   |     20 | JON JONES | 2975.00 |
+|     30 | SALES      |     30 | TURNER    | 1500.00 |
+|     30 | SALES      |     30 | BLAKE     | 2850.00 |
+|     30 | SALES      |     30 | MARTIN    | 1250.00 |
+|     30 | SALES      |     30 | WARD      | 1250.00 |
+|     30 | SALES      |     30 | ALLEN     | 1600.00 |
++--------+------------+--------+-----------+---------+
+9 rows in set (0.00 sec)
+
+mysql> select dept.deptno, dname, emp.deptno,ename,sal from dept, emp where dept.deptno = emp.deptno AND emp.ename="king";
++--------+------------+--------+-------+---------+
+| deptno | dname      | deptno | ename | sal     |
++--------+------------+--------+-------+---------+
+|     10 | ACCOUNTING |     10 | KING  | 5000.00 |
++--------+------------+--------+-------+---------+
+1 row in set (0.00 sec)
+
+mysql> select dept.deptno, dname, emp.deptno,ename,sal from dept, emp where dept.deptno = emp.deptno AND emp.ename like "j%";
++--------+----------+--------+-----------+---------+
+| deptno | dname    | deptno | ename     | sal     |
++--------+----------+--------+-----------+---------+
+|     20 | RESEARCH |     20 | JON JONES | 2975.00 |
+|     30 | SALES    |     30 | JAMES     |  950.00 |
++--------+----------+--------+-----------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select dept.deptno, dname, emp.deptno,ename,sal from dept, emp where dept.deptno = emp.deptno AND emp.ename like "j%";
++--------+----------+--------+-----------+---------+
+| deptno | dname    | deptno | ename     | sal     |
++--------+----------+--------+-----------+---------+
+|     20 | RESEARCH |     20 | JON JONES | 2975.00 |
+|     30 | SALES    |     30 | JAMES     |  950.00 |
++--------+----------+--------+-----------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select dept.deptno, dname, emp.deptno,ename,sal from dept, emp where dept.deptno != emp.deptno;
++--------+------------+--------+-----------+---------+
+| deptno | dname      | deptno | ename     | sal     |
++--------+------------+--------+-----------+---------+
+|     40 | OPERATIONS |     20 | SMITH     |  800.00 |
+|     30 | SALES      |     20 | SMITH     |  800.00 |
+|     10 | ACCOUNTING |     20 | SMITH     |  800.00 |
+|     40 | OPERATIONS |     30 | ALLEN     | 1600.00 |
+|     20 | RESEARCH   |     30 | ALLEN     | 1600.00 |
+|     10 | ACCOUNTING |     30 | ALLEN     | 1600.00 |
+|     40 | OPERATIONS |     30 | WARD      | 1250.00 |
+|     20 | RESEARCH   |     30 | WARD      | 1250.00 |
+|     10 | ACCOUNTING |     30 | WARD      | 1250.00 |
+|     40 | OPERATIONS |     20 | JON JONES | 2975.00 |
+|     30 | SALES      |     20 | JON JONES | 2975.00 |
+|     10 | ACCOUNTING |     20 | JON JONES | 2975.00 |
+|     40 | OPERATIONS |     30 | MARTIN    | 1250.00 |
+|     20 | RESEARCH   |     30 | MARTIN    | 1250.00 |
+|     10 | ACCOUNTING |     30 | MARTIN    | 1250.00 |
+|     40 | OPERATIONS |     30 | BLAKE     | 2850.00 |
+|     20 | RESEARCH   |     30 | BLAKE     | 2850.00 |
+|     10 | ACCOUNTING |     30 | BLAKE     | 2850.00 |
+|     40 | OPERATIONS |     10 | CLARK     | 2450.00 |
+|     30 | SALES      |     10 | CLARK     | 2450.00 |
+|     20 | RESEARCH   |     10 | CLARK     | 2450.00 |
+|     40 | OPERATIONS |     20 | SCOTT     | 3000.00 |
+|     30 | SALES      |     20 | SCOTT     | 3000.00 |
+|     10 | ACCOUNTING |     20 | SCOTT     | 3000.00 |
+|     40 | OPERATIONS |     10 | KING      | 5000.00 |
+|     30 | SALES      |     10 | KING      | 5000.00 |
+|     20 | RESEARCH   |     10 | KING      | 5000.00 |
+|     40 | OPERATIONS |     30 | TURNER    | 1500.00 |
+|     20 | RESEARCH   |     30 | TURNER    | 1500.00 |
+|     10 | ACCOUNTING |     30 | TURNER    | 1500.00 |
+|     40 | OPERATIONS |     20 | ADAMS     | 1100.00 |
+|     30 | SALES      |     20 | ADAMS     | 1100.00 |
+|     10 | ACCOUNTING |     20 | ADAMS     | 1100.00 |
+|     40 | OPERATIONS |     30 | JAMES     |  950.00 |
+|     20 | RESEARCH   |     30 | JAMES     |  950.00 |
+|     10 | ACCOUNTING |     30 | JAMES     |  950.00 |
+|     40 | OPERATIONS |     20 | FORD      | 3000.00 |
+|     30 | SALES      |     20 | FORD      | 3000.00 |
+|     10 | ACCOUNTING |     20 | FORD      | 3000.00 |
+|     40 | OPERATIONS |     10 | MILLER    | 1300.00 |
+|     30 | SALES      |     10 | MILLER    | 1300.00 |
+|     20 | RESEARCH   |     10 | MILLER    | 1300.00 |
++--------+------------+--------+-----------+---------+
+42 rows in set (0.00 sec)
+
+mysql> select dept.deptno, dname, emp.deptno,ename,sal from dept, emp where dept.deptno = emp.deptno AND emp.ename like "j%"; ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> select * from dept natural join emp;
++--------+------------+----------+-------+-----------+-----------+------+------------+---------+---------+
+| DEPTNO | DNAME      | LOC      | EMPNO | ENAME     | JOB       | MGR  | HIREDATE   | SAL     | COMM    |
++--------+------------+----------+-------+-----------+-----------+------+------------+---------+---------+
+|     20 | RESEARCH   | DALLAS   |  7369 | SMITH     | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |
+|     30 | SALES      | CHICAGO  |  7499 | ALLEN     | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |
+|     30 | SALES      | CHICAGO  |  7521 | WARD      | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |
+|     20 | RESEARCH   | DALLAS   |  7566 | JON JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |
+|     30 | SALES      | CHICAGO  |  7654 | MARTIN    | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |
+|     30 | SALES      | CHICAGO  |  7698 | BLAKE     | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |
+|     10 | ACCOUNTING | NEW YORK |  7782 | CLARK     | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |
+|     20 | RESEARCH   | DALLAS   |  7788 | SCOTT     | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |
+|     10 | ACCOUNTING | NEW YORK |  7839 | KING      | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |
+|     30 | SALES      | CHICAGO  |  7844 | TURNER    | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |
+|     20 | RESEARCH   | DALLAS   |  7876 | ADAMS     | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |
+|     30 | SALES      | CHICAGO  |  7900 | JAMES     | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |
+|     20 | RESEARCH   | DALLAS   |  7902 | FORD      | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |
+|     10 | ACCOUNTING | NEW YORK |  7934 | MILLER    | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |
++--------+------------+----------+-------+-----------+-----------+------+------------+---------+---------+
+14 rows in set (0.00 sec)
+
+mysql> select * from dept;
++--------+------------+----------+
+| DEPTNO | DNAME      | LOC      |
++--------+------------+----------+
+|     10 | ACCOUNTING | NEW YORK |
+|     20 | RESEARCH   | DALLAS   |
+|     30 | SALES      | CHICAGO  |
+|     40 | OPERATIONS | BOSTON   |
++--------+------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp;
++-------+-----------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME     | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH     | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN     | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD      | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JON JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN    | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE     | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK     | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT     | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING      | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER    | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS     | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES     | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD      | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER    | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+-----------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> --this is a example of natural join
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '--this is a example of natural join' at line 1
+mysql>
+GRANT to allow use  to access of an object to a user. eg: grant select,insert on emp to anand;
+REVOKE command to remove access of an object to a user. eg:revoke select,insert on emp from anand;
+ near '--this is a example of natural join' at line 1
+mysql> SELECT User FROM mysql.user;
++------------------+
+| User             |
++------------------+
+| iacsd            |
+| mysql.infoschema |
+| mysql.session    |
+| mysql.sys        |
+| root             |
++------------------+
+5 rows in set (0.00 sec)
+
+Alter command: add,modify or delete a column in a table.
+add or drop constraints.
+rename table or columns.
